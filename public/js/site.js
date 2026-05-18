@@ -111,11 +111,13 @@
       x: Math.random() * width,
       y: Math.random() * height,
       radius: rand(0.38, 1.12),
-      alpha: rand(0.34, 0.84),
+      alpha: rand(0.30, 0.76),
       drift: rand(0.08, 0.48),
       twinkle: rand(0.006, 0.02),
       phase: Math.random() * Math.PI * 2,
       scrollPull: rand(0.018, 0.075),
+      pulseSpeed: rand(0.001, 0.006),
+      pulseAmp: rand(0.06, 0.2),
       color: color
     };
   }
@@ -130,7 +132,7 @@
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const density = mobileQuery.matches ? 0.000062 : 0.000094;
+    const density = mobileQuery.matches ? 0.000072 : 0.000108;
     const count = Math.max(34, Math.round(width * height * density));
     stars = Array.from({ length: count }, makeStar);
     shootingStars = [];
@@ -148,10 +150,10 @@
       return;
     }
 
-    const glowRadius = star.radius * 4.8;
+    const glowRadius = star.radius * 3.0;
 
     ctx.beginPath();
-    ctx.fillStyle = star.color.glow + alpha * 0.14 + ")";
+    ctx.fillStyle = star.color.glow + alpha * 0.1 + ")";
     ctx.arc(star.x, star.y, glowRadius, 0, Math.PI * 2);
     ctx.fill();
 
@@ -266,7 +268,9 @@
     ctx.clearRect(0, 0, width, height);
 
     stars.forEach(function (star) {
-      const pulse = Math.sin(time * star.twinkle + star.phase) * 0.2;
+      const rapid = Math.sin(time * star.twinkle + star.phase) * 0.1;
+      const glow = Math.sin(time * star.pulseSpeed + star.phase + 1.8) * star.pulseAmp;
+      const pulse = rapid + glow;
 
       star.y += star.drift + scrollVelocity * star.scrollPull;
       star.x += Math.sin(time * 0.006 + star.phase) * 0.045;
