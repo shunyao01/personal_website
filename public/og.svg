@@ -10,7 +10,7 @@
   <circle cx="180" cy="120" r="2" fill="#f4f7f8" opacity="0.5"/>
   <circle cx="980" cy="90" r="1.5" fill="#56d8e6" opacity="0.7"/>
   <circle cx="1040" cy="520" r="2" fill="#d6bc7a" opacity="0.55"/>
-  <text x="96" y="300" fill="#f4f7f8" font-family="Arial, sans-serif" font-size="72" font-weight="700">ShunYao Tee</text>
+  <text x="96" y="300" fill="#f4f7f8" font-family="Arial, sans-serif" font-size="72" font-weight="700">Shun Yao Tee</text>
   <text x="100" y="372" fill="#56d8e6" font-family="Arial, sans-serif" font-size="30" letter-spacing="0.08em">MACHINE LEARNING ENGINEER</text>
-  <text x="100" y="430" fill="#aab4bd" font-family="Arial, sans-serif" font-size="24">Production inference · MLOps · Real-time ML</text>
+  <text x="100" y="430" fill="#aab4bd" font-family="Arial, sans-serif" font-size="24">Production inference ï¿½ MLOps ï¿½ Real-time ML</text>
 </svg>

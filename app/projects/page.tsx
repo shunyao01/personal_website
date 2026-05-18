@@ -3,7 +3,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteShell";
 import { getProjectCount, getProjects, getSiteConfig } from "@/lib/content";
 
 export const metadata = {
-  title: "Projects | ShunYao Tee",
+  title: "Projects | Shun Yao Tee",
   description: "All production ML and platform projects."
 };
 

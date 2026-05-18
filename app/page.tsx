@@ -42,7 +42,7 @@ export default function HomePage() {
             <p className="hero-sub">{site.tagline}</p>
             <div className="hero-actions">
               <a className="btn-primary" href="#work">
-                View projects
+                View Projects
               </a>
               <a className="btn-ghost" href="#">
                 Download CV
@@ -89,15 +89,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          <a className="scroll-cue" href="#work" aria-label="Scroll to selected work">
-            Selected work <span>↓</span>
+          <a className="scroll-cue" href="#work" aria-label="Scroll to featured work">
+            Featured work <span>↓</span>
           </a>
         </section>
 
         <section className="page-section section reveal has-stagger" id="work">
           <div className="section-heading-row reveal-item">
             <div>
-              <p className="eyebrow">// selected work</p>
+              <p className="eyebrow">// featured work</p>
               <h2 className="sec-head">Projects that ship</h2>
               <p className="work-count">
                 {projectCount} project{projectCount === 1 ? "" : "s"} ·{" "}

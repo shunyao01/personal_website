@@ -72,7 +72,7 @@ slug: inference-apis-for-teams
 
 ## Site config
 
-Edit `content/site.json` for **ShunYao Tee**, tagline, email, and links.
+Edit `content/site.json` for **Shun Yao Tee**, tagline, email, and links.
 
 ## Day-to-day
 
