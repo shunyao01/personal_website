@@ -1,0 +1,15 @@
+{
+  "firstName": "ShunYao",
+  "lastName": "Tee",
+  "role": "Machine Learning Engineer",
+  "tagline": "Machine learning engineer building production inference systems, real-time feature pipelines, and the infrastructure that gets models into customer hands.",
+  "email": "hello@shunyaotee.com",
+  "logo": "st",
+  "badge": "Open to consulting",
+  "meta": ["MLE · Platform", "Inference · MLOps", "Python · PyTorch · k8s"],
+  "social": {
+    "github": "https://github.com/",
+    "linkedin": "https://linkedin.com/in/",
+    "email": "mailto:hello@shunyaotee.com"
+  }
+}

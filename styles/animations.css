@@ -1,0 +1,343 @@
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.86);
+  }
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal.is-visible {
+  animation: floatIn 0.9s var(--ease-standard) forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.reveal.has-stagger {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.has-stagger .reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+}
+
+.reveal.has-stagger.is-visible .reveal-item {
+  animation: slideInUp 0.88s var(--ease-standard) forwards;
+}
+
+.reveal.has-stagger.is-visible .reveal-item:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.reveal.has-stagger.is-visible .reveal-item:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.reveal.has-stagger.is-visible .reveal-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.reveal.has-stagger.is-visible .reveal-item:nth-child(4) {
+  animation-delay: 0.28s;
+}
+
+.reveal.has-stagger.is-visible .reveal-item:nth-child(5) {
+  animation-delay: 0.36s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    display: none;
+  }
+
+  .reveal.has-stagger .reveal-item {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .reveal.has-stagger.is-visible .reveal-item {
+    animation: none;
+  }
+}
+
+.badge-dot {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.qubit {
+  width: 560px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.16s linear;
+}
+
+.qubit::before {
+  content: "";
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  border: 1px solid rgba(244, 247, 248, 0.055);
+  transform: rotate(45deg);
+}
+
+.sphere {
+  position: absolute;
+  width: 36%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 58%),
+    linear-gradient(315deg, rgba(214, 188, 122, 0.08), transparent 66%);
+  border: 1px solid rgba(244, 247, 248, 0.11);
+  box-shadow:
+    inset 0 0 32px rgba(255, 255, 255, 0.025),
+    0 0 72px rgba(86, 216, 230, 0.09);
+  opacity: 0.7;
+}
+
+.core {
+  width: 11px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f7fdff;
+  box-shadow:
+    0 0 10px rgba(247, 253, 255, 0.88),
+    0 0 28px rgba(86, 216, 230, 0.42);
+  animation: corePulse 5.4s ease-in-out infinite;
+  z-index: 5;
+}
+
+.orbit {
+  position: absolute;
+  width: 72%;
+  height: 24%;
+  border-radius: 50%;
+  border: 1px solid rgba(86, 216, 230, 0.16);
+  box-shadow: 0 0 24px rgba(86, 216, 230, 0.06);
+}
+
+.orbit::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(214, 188, 122, 0.24);
+  border-radius: inherit;
+  opacity: 0.5;
+  filter: blur(0.8px);
+}
+
+.orbit.a {
+  transform: rotate(22deg);
+  animation: spinA 28s linear infinite;
+}
+
+.orbit.b {
+  transform: rotate(-54deg);
+  animation: spinB 34s linear infinite reverse;
+}
+
+.orbit.c {
+  width: 66%;
+  height: 22%;
+  transform: rotate(92deg);
+  animation: spinC 38s linear infinite;
+  opacity: 0.82;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: #eafcff;
+  box-shadow: 0 0 10px rgba(234, 252, 255, 0.8);
+  animation: travel 16s linear infinite;
+}
+
+.orbit.b .dot {
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+.orbit.c .dot {
+  animation-duration: 23s;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: rgba(244, 247, 248, 0.7);
+  opacity: 0;
+  animation: drift linear infinite;
+}
+
+.label-wrap {
+  position: absolute;
+  bottom: 8%;
+  text-align: center;
+  z-index: 7;
+}
+
+.label,
+.label-sub {
+  font-family: var(--font-mono);
+}
+
+.label {
+  color: rgba(244, 247, 248, 0.72);
+  font-size: 11px;
+}
+
+.label-sub {
+  margin-top: 8px;
+  color: rgba(170, 180, 189, 0.58);
+  font-size: 10px;
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 1;
+  }
+}
+
+@keyframes spinA {
+  from { transform: rotate(22deg) rotateZ(0deg); }
+  to { transform: rotate(22deg) rotateZ(360deg); }
+}
+
+@keyframes spinB {
+  from { transform: rotate(-54deg) rotateZ(0deg); }
+  to { transform: rotate(-54deg) rotateZ(360deg); }
+}
+
+@keyframes spinC {
+  from { transform: rotate(92deg) rotateZ(0deg); }
+  to { transform: rotate(92deg) rotateZ(360deg); }
+}
+
+@keyframes travel {
+  from { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.48;
+  }
+  100% {
+    transform: translateY(-92px);
+    opacity: 0;
+  }
+}
+
+@keyframes stackMarqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - var(--marquee-offset))); }
+}
+
+@keyframes stackMarqueeRight {
+  from { transform: translateX(calc(-50% - var(--marquee-offset))); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 1080px) {
+  .qubit {
+    width: 440px;
+  }
+
+  @keyframes travel {
+    from { transform: rotate(0deg) translateX(136px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(136px) rotate(-360deg); }
+  }
+}
+
+@media (max-width: 760px) {
+  .qubit {
+    width: 238px;
+  }
+
+  @keyframes travel {
+    from { transform: rotate(0deg) translateX(74px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(74px) rotate(-360deg); }
+  }
+}
+
+.qubit.is-paused .orbit,
+.qubit.is-paused .core,
+.qubit.is-paused .particle,
+.qubit.is-paused .dot {
+  animation-play-state: paused;
+}
+
+.stack-marquee.is-paused .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .qubit {
+    transform: none !important;
+  }
+}

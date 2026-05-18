@@ -1,0 +1,40 @@
+:root {
+  --bg: #050609;
+  --surface-1: rgba(255, 255, 255, 0.035);
+  --surface-2: rgba(255, 255, 255, 0.055);
+  --line: rgba(226, 232, 240, 0.12);
+  --line-strong: rgba(226, 232, 240, 0.2);
+
+  --text-primary: #f4f7f8;
+  --text-soft: #aab4bd;
+  --text-mute: #7b8794;
+
+  --cyan: #56d8e6;
+  --blue: #87a8ff;
+  --gold: #d6bc7a;
+  --green: #68e39f;
+  --ink-on-light: #061014;
+
+  --radius-sm: 8px;
+  --radius-btn: 6px;
+
+  --header-h: 68px;
+  --screen-h: calc(100svh - var(--header-h));
+  --content-rail: calc(100vw * 0.6);
+  --page-pad: max(24px, calc((100vw - var(--content-rail)) / 2));
+  --section-pad: 118px;
+  --page-3-gap: clamp(112px, 13vh, 148px);
+  --page-4-gap: clamp(48px, 7vh, 76px);
+
+  --font-sans: var(--font-geist-sans), "Geist", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --content-rail: calc(100vw - 48px);
+    --page-pad: 24px;
+    --section-pad: 76px;
+  }
+}

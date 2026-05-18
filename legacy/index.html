@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuna Nakamura | Machine Learning Engineer</title>
+  <meta name="description" content="Machine learning engineer building production inference systems, MLOps pipelines, and reliable AI platforms." />
+  <meta property="og:title" content="Yuna Nakamura | Machine Learning Engineer" />
+  <meta property="og:description" content="Production-focused ML engineer portfolio with projects, systems, and writing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og.svg" />
+  <meta property="og:image:alt" content="Yuna Nakamura — Machine Learning Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yuna Nakamura | Machine Learning Engineer" />
+  <meta name="twitter:description" content="Production-focused ML engineer portfolio with projects, systems, and writing." />
+  <meta name="twitter:image" content="/og.svg" />
+  <meta name="theme-color" content="#070d18" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" /> -->
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+  <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+
+  <div class="page-shell">
+    <aside class="scroll-intent" aria-label="Page position">
+      <span class="intent-label">About</span>
+      <span class="intent-track" aria-hidden="true"><span class="intent-progress"></span></span>
+      <span class="intent-count"><span class="intent-current">01</span><span>/</span><span>04</span></span>
+      <div class="intent-dots" aria-hidden="true">
+        <span class="intent-dot is-active"></span>
+        <span class="intent-dot"></span>
+        <span class="intent-dot"></span>
+        <span class="intent-dot"></span>
+      </div>
+    </aside>
+
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="nav-logo" href="#top">yn<span>_</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+        <ul class="nav-links" id="mobile-nav">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <a class="nav-cta" href="mailto:yuna@example.com">Get in touch</a>
+      </nav>
+    </header>
+
+    <main id="top" tabindex="-1">
+      <section class="page-section hero reveal" id="about">
+        <div class="hero-copy">
+          <p class="hero-badge"><span class="badge-dot"></span>Open to consulting</p>
+          <h1 class="hero-name">Yuna <br /><span class="hero-name-accent">Nakamura</span></h1>
+          <p class="hero-sub">Machine learning engineer building production inference systems, real-time feature pipelines, and the infrastructure that gets models into customer hands.</p>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="#work">View projects</a>
+            <a class="btn-ghost" href="#">Download CV</a>
+          </div>
+
+          <div class="hero-meta" aria-label="Professional snapshot">
+            <span>MLE · Platform</span>
+            <span>Inference · MLOps</span>
+            <span>Python · PyTorch · k8s</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="qubit" id="qubit" aria-label="Decorative quantum animation">
+            <div class="particles" id="particles"></div>
+            <div class="orbit a"><span class="dot"></span></div>
+            <div class="orbit b"><span class="dot"></span></div>
+            <div class="orbit c"><span class="dot"></span></div>
+            <div class="sphere"></div>
+            <div class="core"></div>
+            <div class="label-wrap">
+              <p class="label">Qubit</p>
+              <p class="label-sub">Coherence Node</p>
+            </div>
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#work" aria-label="Scroll to selected work">Selected work <span>↓</span></a>
+      </section>
+
+      <section class="page-section section reveal" id="work">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">// selected work</p>
+            <h2 class="sec-head">Projects that ship</h2>
+          </div>
+          <p class="sec-sub">Production systems designed for reliability, maintainability, and measurable business outcomes.</p>
+        </div>
+
+        <div class="bento">
+          <details class="bcard project-card" open>
+            <summary>
+              <span class="project-signal" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="project-heading">
+                <span class="project-index">01</span>
+                <span class="bcard-title">Real-time Recommendation Engine</span>
+                <span class="project-teaser">Low-latency retrieval and ranking under production load.</span>
+              </span>
+              <span class="project-arrow">↓</span>
+            </summary>
+            <p class="bcard-desc">Two-tower retrieval model serving 3.2M daily predictions with incremental FAISS indexing and feature retrieval via Redis + Feast.</p>
+            <div class="bcard-metrics">
+              <div><p class="bm-val">3.2M</p><p class="bm-key">predictions/day</p></div>
+              <div><p class="bm-val">18ms</p><p class="bm-key">p99 latency</p></div>
+              <div><p class="bm-val">+14%</p><p class="bm-key">CTR lift</p></div>
+            </div>
+            <div class="bcard-tags">
+              <span class="tag cy">PyTorch</span><span class="tag cy">FAISS</span><span class="tag bl">Feast</span><span class="tag">Redis</span><span class="tag">Triton</span>
+            </div>
+          </details>
+
+          <details class="bcard project-card">
+            <summary>
+              <span class="project-signal" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="project-heading">
+                <span class="project-index">02</span>
+                <span class="bcard-title">Feature Pipeline Framework</span>
+                <span class="project-teaser">Point-in-time correct features with repeatable backfills.</span>
+              </span>
+              <span class="project-arrow">↓</span>
+            </summary>
+            <p class="bcard-desc">Declarative point-in-time feature SDK running on Spark with automated backfills and data quality checks.</p>
+            <div class="bcard-metrics">
+              <div><p class="bm-val">6</p><p class="bm-key">teams using</p></div>
+              <div><p class="bm-val">200+</p><p class="bm-key">features defined</p></div>
+            </div>
+            <div class="bcard-tags"><span class="tag cy">PySpark</span><span class="tag">Airflow</span><span class="tag bl">dbt</span></div>
+          </details>
+
+          <details class="bcard project-card">
+            <summary>
+              <span class="project-signal" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="project-heading">
+                <span class="project-index">03</span>
+                <span class="bcard-title">Model Risk Monitor</span>
+                <span class="project-teaser">Drift, shadow scoring, and escalation before metrics fall.</span>
+              </span>
+              <span class="project-arrow">↓</span>
+            </summary>
+            <p class="bcard-desc">Drift detection, shadow scoring, and alert escalation integrated with Prometheus and PagerDuty.</p>
+            <div class="bcard-metrics">
+              <div><p class="bm-val">98%</p><p class="bm-key">drift recall</p></div>
+              <div><p class="bm-val">&lt;5m</p><p class="bm-key">alert latency</p></div>
+            </div>
+            <div class="bcard-tags"><span class="tag cy">Evidently</span><span class="tag bl">Prometheus</span><span class="tag">k8s</span></div>
+          </details>
+        </div>
+      </section>
+
+      <section class="page-section split reveal" id="stack">
+        <div class="stack-showcase">
+          <div class="stack-copy">
+            <p class="eyebrow">// technical surface</p>
+            <h2 class="sec-head">Systems I work through</h2>
+            <p class="sec-sub">The stack is intentionally production-first: fast inference, reliable orchestration, observable pipelines, and clean retrieval layers.</p>
+          </div>
+
+          <div class="stack-marquee" aria-label="Technology stack marquee">
+            <div class="marquee-row">
+              <div class="marquee-track">
+                <span class="tech-pill" tabindex="0" data-tech="PyTorch">PT</span>
+                <span class="tech-pill" tabindex="0" data-tech="Triton">TR</span>
+                <span class="tech-pill" tabindex="0" data-tech="vLLM">VL</span>
+                <span class="tech-pill" tabindex="0" data-tech="Ray">RY</span>
+                <span class="tech-pill" tabindex="0" data-tech="Qdrant">QD</span>
+                <span class="tech-pill" tabindex="0" data-tech="Feast">FS</span>
+                <span class="tech-pill" tabindex="0" data-tech="Redis">RD</span>
+                <span class="tech-pill" tabindex="0" data-tech="Kubernetes">K8</span>
+                <span class="tech-pill" tabindex="0" data-tech="PyTorch">PT</span>
+                <span class="tech-pill" tabindex="0" data-tech="Triton">TR</span>
+                <span class="tech-pill" tabindex="0" data-tech="vLLM">VL</span>
+                <span class="tech-pill" tabindex="0" data-tech="Ray">RY</span>
+                <span class="tech-pill" tabindex="0" data-tech="Qdrant">QD</span>
+                <span class="tech-pill" tabindex="0" data-tech="Feast">FS</span>
+                <span class="tech-pill" tabindex="0" data-tech="Redis">RD</span>
+                <span class="tech-pill" tabindex="0" data-tech="Kubernetes">K8</span>
+              </div>
+            </div>
+            <div class="marquee-row reverse">
+              <div class="marquee-track">
+                <span class="tech-pill" tabindex="0" data-tech="OpenTelemetry">OT</span>
+                <span class="tech-pill" tabindex="0" data-tech="Prometheus">PM</span>
+                <span class="tech-pill" tabindex="0" data-tech="Snowflake">SF</span>
+                <span class="tech-pill" tabindex="0" data-tech="dbt">DB</span>
+                <span class="tech-pill" tabindex="0" data-tech="Airflow">AF</span>
+                <span class="tech-pill" tabindex="0" data-tech="LangGraph">LG</span>
+                <span class="tech-pill" tabindex="0" data-tech="Spark">SP</span>
+                <span class="tech-pill" tabindex="0" data-tech="Evidently">EV</span>
+                <span class="tech-pill" tabindex="0" data-tech="OpenTelemetry">OT</span>
+                <span class="tech-pill" tabindex="0" data-tech="Prometheus">PM</span>
+                <span class="tech-pill" tabindex="0" data-tech="Snowflake">SF</span>
+                <span class="tech-pill" tabindex="0" data-tech="dbt">DB</span>
+                <span class="tech-pill" tabindex="0" data-tech="Airflow">AF</span>
+                <span class="tech-pill" tabindex="0" data-tech="LangGraph">LG</span>
+                <span class="tech-pill" tabindex="0" data-tech="Spark">SP</span>
+                <span class="tech-pill" tabindex="0" data-tech="Evidently">EV</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="learning-log-col">
+          <div class="learning-log-head">
+            <div>
+              <p class="eyebrow">// learning log</p>
+              <h3 class="log-title">Current research threads</h3>
+            </div>
+            <p class="log-intro">Small notes from systems I am shipping, studying, or pressure-testing in production.</p>
+          </div>
+
+          <div class="learning-log-grid" aria-label="Learning log list">
+            <article class="log-card log-card--featured">
+              <div class="log-meta"><span class="log-date">2026-05</span><span class="b-shipped">shipped</span></div>
+              <p class="log-text">Autoscaling policy for GPU inference workloads with cost-aware routing.</p>
+            </article>
+            <article class="log-card log-card--featured">
+              <div class="log-meta"><span class="log-date">2026-04</span><span class="b-studying">studying</span></div>
+              <p class="log-text">Speculative decoding strategies for low-latency response generation.</p>
+            </article>
+            <article class="log-card">
+              <div class="log-meta"><span class="log-date">2026-03</span><span class="b-reading">reading</span></div>
+              <p class="log-text">State of online feature stores and retrieval systems for streaming ML.</p>
+            </article>
+            <article class="log-card">
+              <div class="log-meta"><span class="log-date">2026-02</span><span class="b-shipped">shipped</span></div>
+              <p class="log-text">Feature validation in CI before expensive backfill jobs run.</p>
+            </article>
+            <article class="log-card">
+              <div class="log-meta"><span class="log-date">2026-01</span><span class="b-reading">reading</span></div>
+              <p class="log-text">Evaluation patterns for retrieval augmented generation in production.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section final-page reveal" aria-label="Building and writing logs">
+        <div class="log-section" aria-label="Building log">
+          <div class="log-section-head">
+            <div>
+              <p class="eyebrow">// building log</p>
+              <h2 class="sec-head">What I am making</h2>
+            </div>
+            <p class="sec-sub">A lightweight record of shipped pieces, experiments, and infrastructure improvements.</p>
+          </div>
+
+          <div class="roll-panel building-roll" tabindex="0" aria-label="Building log list">
+            <a class="writing-row building-row" href="#">
+              <span class="wr-title">GPU Inference Autoscaler</span>
+              <span class="wr-meta">May 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row building-row" href="#">
+              <span class="wr-title">Feature Contract CI Checks</span>
+              <span class="wr-meta">Apr 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row building-row" href="#">
+              <span class="wr-title">Realtime Embedding Refresh Worker</span>
+              <span class="wr-meta">Mar 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row building-row" href="#">
+              <span class="wr-title">Model Risk Alert Triage View</span>
+              <span class="wr-meta">Feb 2026 <span class="wr-arrow">→</span></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="writing-section" id="writing" aria-label="Writing log">
+          <div class="log-section-head">
+            <div>
+              <p class="eyebrow">// writing log</p>
+              <h2 class="sec-head">Notes in public</h2>
+            </div>
+            <p class="sec-sub">Short essays and field notes from production ML systems work.</p>
+          </div>
+
+          <div class="roll-panel writing-roll" tabindex="0" aria-label="Writing list">
+            <a class="writing-row" href="#">
+              <span class="wr-title">Designing Inference APIs for Teams, Not Just Models</span>
+              <span class="wr-meta">May 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row" href="#">
+              <span class="wr-title">Feature Freshness Budgets in Real-time Ranking Systems</span>
+              <span class="wr-meta">Apr 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row" href="#">
+              <span class="wr-title">Practical Drift Detection with Low False Positives</span>
+              <span class="wr-meta">Mar 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row" href="#">
+              <span class="wr-title">How to Debug a Model That Only Fails on Tuesdays</span>
+              <span class="wr-meta">Feb 2026 <span class="wr-arrow">→</span></span>
+            </a>
+            <a class="writing-row" href="#">
+              <span class="wr-title">Small Interfaces for Large ML Systems</span>
+              <span class="wr-meta">Jan 2026 <span class="wr-arrow">→</span></span>
+            </a>
+          </div>
+        </div>
+
+        <footer>
+          <p class="ft">© 2026 Yuna Nakamura</p>
+          <div class="ft-links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="mailto:yuna@example.com">Email</a>
+          </div>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/site.js" defer></script>
+</body>
+</html>
