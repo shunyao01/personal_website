@@ -26,11 +26,16 @@ function readMarkdownFiles<T>(
   return fs
     .readdirSync(fullDir)
     .filter((file) => file.endsWith(".md"))
-    .map((file) => {
-      const slug = file.replace(/\.md$/, "");
-      const raw = fs.readFileSync(path.join(fullDir, file), "utf8");
-      const parsed = matter(raw);
-      return map(slug, { data: parsed.data as Record<string, unknown>, content: parsed.content });
+    .flatMap((file) => {
+      try {
+        const slug = file.replace(/\.md$/, "");
+        const raw = fs.readFileSync(path.join(fullDir, file), "utf8");
+        const parsed = matter(raw);
+        return [map(slug, { data: parsed.data as Record<string, unknown>, content: parsed.content })];
+      } catch (err) {
+        console.error(`[content] failed to parse ${dir}/${file}:`, err);
+        return [];
+      }
     });
 }
 
@@ -75,9 +80,8 @@ export function getProjectCount(): number {
   return getProjects().length;
 }
 
-export function getProjectCategories(): ProjectCategory[] {
-  const categories = new Set(getProjects().map((project) => project.category));
-  return Array.from(categories).sort();
+export function getProject(slug: string): Project | undefined {
+  return getProjects().find((p) => p.slug === slug);
 }
 
 export function getLearning(): LearningEntry[] {
@@ -87,8 +91,13 @@ export function getLearning(): LearningEntry[] {
     date: String(data.date ?? slug.slice(0, 7)),
     status: (data.status as LogStatus) ?? "reading",
     featured: Boolean(data.featured),
+    tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
     body: content.trim()
   })).sort(byDateDesc);
+}
+
+export function getLearningEntry(slug: string): LearningEntry | undefined {
+  return getLearning().find((l) => l.slug === slug);
 }
 
 export function getBuilding(): BuildingEntry[] {
@@ -97,8 +106,13 @@ export function getBuilding(): BuildingEntry[] {
     title: String(data.title ?? ""),
     date: String(data.date ?? slug.slice(0, 7)),
     status: (data.status as LogStatus) ?? "shipped",
+    tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
     body: content.trim()
   })).sort(byDateDesc);
+}
+
+export function getBuildingEntry(slug: string): BuildingEntry | undefined {
+  return getBuilding().find((b) => b.slug === slug);
 }
 
 export function getWriting(): WritingEntry[] {
@@ -108,6 +122,10 @@ export function getWriting(): WritingEntry[] {
     date: String(data.date ?? slug.slice(0, 7)),
     body: content.trim()
   })).sort(byDateDesc);
+}
+
+export function getWritingEntry(slug: string): WritingEntry | undefined {
+  return getWriting().find((w) => w.slug === slug);
 }
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -123,9 +141,13 @@ export function formatMonth(date: string): string {
   return `${MONTHS[index] ?? month} ${year}`;
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  "ml-engineering": "ML Engineering",
+  mlops: "MLOps",
+  infrastructure: "Infrastructure",
+  research: "Research"
+};
+
 export function formatCategory(category: ProjectCategory): string {
-  return category
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+  return CATEGORY_LABELS[category] ?? category;
 }

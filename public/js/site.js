@@ -423,7 +423,7 @@
   });
 
   if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
+    var revealObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -435,9 +435,28 @@
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
 
-    revealEls.forEach(function (el) {
+    function observeReveal(el) {
       revealObserver.observe(el);
-    });
+    }
+
+    revealEls.forEach(observeReveal);
+
+    // Observe dynamically-added .reveal elements (client-side navigation)
+    if ("MutationObserver" in window) {
+      var mutationObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === 1) {
+              if (node.classList.contains("reveal")) {
+                observeReveal(node);
+              }
+              node.querySelectorAll && node.querySelectorAll(".reveal").forEach(observeReveal);
+            }
+          });
+        });
+      });
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
   } else {
     revealEls.forEach(function (el) {
       el.classList.add("is-visible");
@@ -468,53 +487,70 @@
   }
 
   if (intent) {
-    const sectionEls = pageSections
-      .map(function (section) {
-        const target = document.getElementById(section.id);
-        const measureEl = target ? target.closest(".page-section") || target : null;
-
-        return Object.assign({}, section, { el: measureEl });
-      })
-      .filter(function (section) {
-        return section.el;
-      });
+    function resolveSectionEls() {
+      return pageSections
+        .map(function (section) {
+          const target = document.getElementById(section.id);
+          const measureEl = target ? target.closest(".page-section") || target : null;
+          return Object.assign({}, section, { el: measureEl });
+        })
+        .filter(function (section) {
+          return section.el;
+        });
+    }
 
     function setActiveSection(activeIndex) {
-      const activeSection = sectionEls[activeIndex];
+      var sectionEls = resolveSectionEls();
+      var activeSection = sectionEls[activeIndex];
 
       if (!activeSection) {
         return;
       }
 
-      if (intentLabel) {
-        intentLabel.textContent = activeSection.label;
+      var label = document.querySelector(".intent-label");
+      var current = document.querySelector(".intent-current");
+      var dots = document.querySelectorAll(".intent-dot");
+      var anchors = document.querySelectorAll(".nav-links a");
+
+      if (label) {
+        label.textContent = activeSection.label;
       }
 
-      if (intentCurrent) {
-        intentCurrent.textContent = String(activeIndex + 1).padStart(2, "0");
+      if (current) {
+        current.textContent = String(activeIndex + 1).padStart(2, "0");
       }
 
-      intentDots.forEach(function (dot, index) {
+      dots.forEach(function (dot, index) {
         dot.classList.toggle("is-active", index === activeIndex);
       });
 
-      navAnchors.forEach(function (anchor) {
+      anchors.forEach(function (anchor) {
         anchor.classList.toggle("is-active", anchor.getAttribute("href") === "#" + activeSection.id);
       });
     }
 
     function updateScrollIntent() {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollMax > 0 ? Math.min(scrollTop / scrollMax, 1) : 0;
-      const viewportCenter = window.innerHeight / 2;
-      let activeIndex = 0;
-      let closestDistance = Infinity;
+      if (!document.querySelector(".scroll-intent")) {
+        return;
+      }
+
+      var sectionEls = resolveSectionEls();
+
+      if (sectionEls.length === 0) {
+        return;
+      }
+
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollMax > 0 ? Math.min(scrollTop / scrollMax, 1) : 0;
+      var viewportCenter = window.innerHeight / 2;
+      var activeIndex = 0;
+      var closestDistance = Infinity;
 
       sectionEls.forEach(function (section, index) {
-        const rect = section.el.getBoundingClientRect();
-        const sectionCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(sectionCenter - viewportCenter);
+        var rect = section.el.getBoundingClientRect();
+        var sectionCenter = rect.top + rect.height / 2;
+        var distance = Math.abs(sectionCenter - viewportCenter);
 
         if (distance < closestDistance) {
           closestDistance = distance;
@@ -527,6 +563,8 @@
       } else if (scrollMax - scrollTop <= 1) {
         activeIndex = sectionEls.length - 1;
       }
+
+      var intentProgress = document.querySelector(".intent-progress");
 
       if (intentProgress) {
         intentProgress.style.height = Math.round(progress * 100) + "%";

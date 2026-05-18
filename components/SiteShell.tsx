@@ -63,8 +63,8 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
         © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {site.firstName} {site.lastName}
       </p>
       <div className="ft-links">
-        <a href={site.social.github}>GitHub</a>
-        <a href={site.social.linkedin}>LinkedIn</a>
+        <a href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href={site.social.email}>Email</a>
       </div>
     </footer>

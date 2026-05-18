@@ -1,8 +1,14 @@
-const CYAN_TAGS = new Set(["PyTorch", "FAISS", "PySpark", "Evidently"]);
-const BLUE_TAGS = new Set(["Feast", "dbt", "Prometheus"]);
+const TAG_COLORS: Record<string, string> = {
+  PyTorch: "tag cy",
+  FAISS: "tag cy",
+  PySpark: "tag cy",
+  Evidently: "tag cy",
+  Feast: "tag bl",
+  dbt: "tag bl",
+  Prometheus: "tag bl"
+};
 
 export function Tag({ name }: { name: string }) {
-  const className = CYAN_TAGS.has(name) ? "tag cy" : BLUE_TAGS.has(name) ? "tag bl" : "tag";
-
+  const className = TAG_COLORS[name] ?? "tag";
   return <span className={className}>{name}</span>;
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Project } from "@/lib/types";
 import { Tag } from "./Tag";
 
@@ -35,6 +36,9 @@ export function Projects({ projects }: { projects: Project[] }) {
               <Tag key={tag} name={tag} />
             ))}
           </div>
+          <Link href={`/projects/${project.slug}`} className="bcard-read-more">
+            Read more →
+          </Link>
         </details>
       ))}
     </div>

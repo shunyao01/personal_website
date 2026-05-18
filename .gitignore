@@ -30,7 +30,6 @@ Thumbs.db
  
 # ─── TypeScript ─────────────────────────────────────
 *.tsbuildinfo
-next-env.d.ts
  
 # ─── Vercel ─────────────────────────────────────────
 .vercel
@@ -41,4 +40,4 @@ next-env.d.ts
 
 # ─── Agents ───────────────────────────────────────────
 CLAUDE.md
- 
+.claude/*

@@ -41,6 +41,7 @@ export type LearningEntry = {
   date: string;
   status: LogStatus;
   featured: boolean;
+  tags: string[];
   body: string;
 };
 
@@ -49,6 +50,7 @@ export type BuildingEntry = {
   title: string;
   date: string;
   status: LogStatus;
+  tags: string[];
   body: string;
 };
 

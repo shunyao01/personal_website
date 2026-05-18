@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { formatMonth } from "@/lib/content";
 import type { LearningEntry, LogStatus } from "@/lib/types";
 
@@ -11,7 +12,8 @@ export function LearningLog({ entries }: { entries: LearningEntry[] }) {
   return (
     <div className="learning-log-grid" aria-label="Learning log list">
       {entries.map((entry) => (
-        <article
+        <Link
+          href={`/learning/${entry.slug}`}
           className={`log-card${entry.featured ? " log-card--featured" : ""}`}
           key={entry.slug}
         >
@@ -20,7 +22,7 @@ export function LearningLog({ entries }: { entries: LearningEntry[] }) {
             <span className={statusClass(entry.status)}>{entry.status}</span>
           </div>
           <p className="log-text">{entry.body || entry.title}</p>
-        </article>
+        </Link>
       ))}
     </div>
   );

@@ -129,6 +129,10 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow">// learning log</p>
                 <h3 className="log-title">Current research threads</h3>
+                <p className="work-count">
+                  {learning.length} entr{learning.length === 1 ? "y" : "ies"} ·{" "}
+                  <Link href="/learning">View all →</Link>
+                </p>
               </div>
               <p className="log-intro">
                 Small notes from systems I am shipping, studying, or pressure-testing in production.
@@ -144,6 +148,10 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow">// building log</p>
                 <h2 className="sec-head">What I am making</h2>
+                <p className="work-count">
+                  {building.length} entr{building.length === 1 ? "y" : "ies"} ·{" "}
+                  <Link href="/building">View all →</Link>
+                </p>
               </div>
               <p className="sec-sub">
                 A lightweight record of shipped pieces, experiments, and infrastructure improvements.
@@ -157,6 +165,10 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow">// writing log</p>
                 <h2 className="sec-head">Notes in public</h2>
+                <p className="work-count">
+                  {writing.length} entr{writing.length === 1 ? "y" : "ies"} ·{" "}
+                  <Link href="/writing">View all →</Link>
+                </p>
               </div>
               <p className="sec-sub">Short essays and field notes from production ML systems work.</p>
             </div>
