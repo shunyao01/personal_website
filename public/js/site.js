@@ -111,7 +111,7 @@
       x: Math.random() * width,
       y: Math.random() * height,
       radius: rand(0.38, 1.12),
-      alpha: rand(0.28, 0.8),
+      alpha: rand(0.34, 0.84),
       drift: rand(0.08, 0.48),
       twinkle: rand(0.006, 0.02),
       phase: Math.random() * Math.PI * 2,
@@ -130,7 +130,7 @@
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const density = mobileQuery.matches ? 0.000052 : 0.000078;
+    const density = mobileQuery.matches ? 0.000062 : 0.000094;
     const count = Math.max(34, Math.round(width * height * density));
     stars = Array.from({ length: count }, makeStar);
     shootingStars = [];
