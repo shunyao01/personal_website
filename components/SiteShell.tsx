@@ -17,10 +17,10 @@ export function SiteHeader({ site }: { site: SiteConfig }) {
             <Link href="/#work">Work</Link>
           </li>
           <li>
-            <Link href="/#stack">Stack</Link>
+            <Link href="/#experience">Experience</Link>
           </li>
           <li>
-            <Link href="/#writing">Writing</Link>
+            <Link href="/#education">Education</Link>
           </li>
           <li>
             <Link href="/#about">About</Link>

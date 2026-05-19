@@ -1,12 +1,19 @@
 {
   "firstName": "Shun Yao",
   "lastName": "Tee",
-  "role": "Machine Learning Engineer",
-  "tagline": "Machine learning engineer building production inference systems, real-time feature pipelines, and the infrastructure that gets models into customer hands.",
+  "role": "Machine Learning Engineer / Data Scientist / Software Engineer",
+  "tagline": "Computer science graduate building applied ML systems, research-driven prototypes, and product-minded software with a strong bias toward execution.",
+  "summary": [
+    "I enjoy the space between research and engineering: taking an idea, pressure-testing it with data, and turning it into something a user or team can actually rely on.",
+    "My background mixes deep learning research, data science internship work, startup execution, and hands-on project building across NLP, RAG, and agent systems.",
+    "I am currently looking for MLE, DS, or SWE opportunities where I can ship practical systems, grow under strong engineering standards, and keep compounding fast."
+  ],
+  "location": "Malaysia",
   "email": "shunyao.tee@proton.me",
+  "resume": "/Shun-Yao-Tee-Resume.pdf",
   "logo": "SY",
-  "badge": "Open to working opportunities",
-  "meta": ["MLE · MLOps", "Agentic · LangGraph", "Python · PyTorch · TF"],
+  "badge": "Open to MLE / DS / SWE roles",
+  "meta": ["Malaysia", "Agents · NLP · Applied ML", "Python · PyTorch · LangGraph"],
   "social": {
     "github": "https://github.com/shunyao01",
     "linkedin": "https://www.linkedin.com/in/shun-yao-tee-809833240/",
