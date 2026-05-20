@@ -1,20 +1,16 @@
 # Content workflow
 
-`CONTENT.md` documents the CMS workflow. The actual source of truth is the `/content` directory plus `content/site.json`.
-
-Portfolio copy lives in Markdown and JSON under `/content`. Next.js reads these files at **build time**—no API routes, no database, no external CMS.
+Portfolio copy lives in Markdown under `/content`. Next.js reads these files at **build time**—no API routes, no CMS, no database.
 
 ## Folder structure
 
 ```
 /content
   /projects          # All work — homepage + /projects auto-update
-  /experience        # Resume-backed roles on the homepage
-  /education         # Degrees, awards, coursework
-  /learning          # Optional research / learning notes
-  /building          # Optional build log
-  /writing           # Optional public notes / essays
-  site.json          # Name, tagline, summary, resume link, socials
+  /learning          # Research threads (stack section)
+  /building          # What I am making
+  /writing           # Public notes / essays
+  site.json          # Name, tagline, email, socials
 ```
 
 Add a file → it appears after rebuild. Delete a file → it disappears. You never edit page code for listings.
@@ -25,7 +21,7 @@ Add a file → it appears after rebuild. Delete a file → it disappears. You ne
 ---
 title: Real-time Recommendation Engine
 date: 2026-03
-category: agents            # agents | applied-ml | product | research
+category: ml-engineering    # ml-engineering | mlops | infrastructure | research
 featured: true              # homepage work section (up to 3, newest first)
 teaser: Low-latency retrieval and ranking under production load.
 tags: [PyTorch, FAISS, Feast, Redis, Triton]
@@ -45,8 +41,6 @@ Plan **`category`** and **`featured`** from day one. When you have 10+ projects,
 
 ## Learning (`/content/learning`)
 
-Optional log section for notes you want to publish later.
-
 ```yaml
 ---
 title: Speculative decoding strategies for low-latency response generation
@@ -58,8 +52,6 @@ featured: true            # wide card in learning grid (optional)
 
 ## Building (`/content/building`)
 
-Optional log section for shipped experiments or infrastructure notes.
-
 ```yaml
 ---
 title: GPU Inference Autoscaler
@@ -69,8 +61,6 @@ status: shipped
 ```
 
 ## Writing (`/content/writing`)
-
-Optional public essays.
 
 ```yaml
 ---
@@ -82,43 +72,13 @@ slug: inference-apis-for-teams
 
 ## Site config
 
-Edit `content/site.json` for **Shun Yao Tee**, hero copy, about summary, resume link, email, and social links.
-
-## Experience (`/content/experience`)
-
-```yaml
----
-title: Data Science Intern
-organization: SmartJen
-location: Singapore, Singapore
-date: Nov 2022 - Feb 2023
-tags: [Python, Pandas, NumPy, PyTorch, AWS Lambda, NLP]
-highlights:
-  - Developed a personalized worksheet-generation algorithm that reached 95% top-3 similarity.
----
-```
-
-## Education (`/content/education`)
-
-```yaml
----
-school: Monash University
-credential: Bachelor of Computer Science (Honours)
-location: Selangor, Malaysia
-date: Jul 2023 - Jun 2024
-notes:
-  - GPA 3.625
-  - Monash Graduate Research Scholarship (2023-2024)
----
-```
+Edit `content/site.json` for **Shun Yao Tee**, tagline, email, and links.
 
 ## Day-to-day
 
 | Task | What to do |
 |------|------------|
 | New project | `content/projects/04-my-project.md` → push → live on homepage (if `featured`) and `/projects` |
-| New role | `content/experience/04-my-role.md` → homepage experience updates automatically |
-| New degree / certificate block | `content/education/03-my-education.md` |
 | Update a metric | Edit frontmatter, save, push |
 | New learning note | `content/learning/2026-06-slug.md` |
 | New build log | `content/building/2026-06-slug.md` |
@@ -133,4 +93,4 @@ npm run dev
 
 ## How it loads
 
-`lib/content.ts` reads each folder with `fs` + `gray-matter`, then passes props into pages and components. Keep new content in `/content`; do not hardcode resume copy in React components unless the content model itself changes.
+`lib/content.ts` reads each folder with `fs` + `gray-matter`, sorts by date, and passes props into pages. One source of truth for homepage, View All, and counts.

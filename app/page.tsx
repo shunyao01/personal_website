@@ -1,24 +1,27 @@
 import Link from "next/link";
-import { EducationList } from "@/components/EducationList";
-import { ExperienceList } from "@/components/ExperienceList";
+import { BuildingLog } from "@/components/BuildingLog";
 import { HERO_PARTICLES } from "@/lib/hero-particles";
+import { LearningLog } from "@/components/LearningLog";
 import { Projects } from "@/components/Projects";
 import { ScrollIntent, SiteFooter, SiteHeader } from "@/components/SiteShell";
 import { StackMarquee } from "@/components/StackMarquee";
+import { WritingLog } from "@/components/WritingLog";
 import {
-  getEducation,
-  getExperience,
+  getBuilding,
   getFeaturedProjects,
+  getLearning,
   getProjectCount,
-  getSiteConfig
+  getSiteConfig,
+  getWriting
 } from "@/lib/content";
 
 export default function HomePage() {
   const site = getSiteConfig();
   const featuredProjects = getFeaturedProjects(3);
   const projectCount = getProjectCount();
-  const experience = getExperience();
-  const education = getEducation();
+  const learning = getLearning();
+  const building = getBuilding();
+  const writing = getWriting();
 
   return (
     <div className="page-shell">
@@ -41,7 +44,7 @@ export default function HomePage() {
               <a className="btn-primary" href="#work">
                 View Projects
               </a>
-              <a className="btn-ghost" href={site.resume}>
+              <a className="btn-ghost" href="#">
                 Download CV
               </a>
             </div>
@@ -95,15 +98,14 @@ export default function HomePage() {
           <div className="section-heading-row reveal-item">
             <div>
               <p className="eyebrow">// featured work</p>
-              <h2 className="sec-head">Selected projects</h2>
+              <h2 className="sec-head">Projects that ship</h2>
               <p className="work-count">
                 {projectCount} project{projectCount === 1 ? "" : "s"} ·{" "}
                 <Link href="/projects">View all →</Link>
               </p>
             </div>
             <p className="sec-sub">
-              Projects from internships, research, startup work, and independent builds across applied ML,
-              multi-agent systems, and product execution.
+              Production systems designed for reliability, maintainability, and measurable business outcomes.
             </p>
           </div>
           <Projects projects={featuredProjects} />
@@ -113,10 +115,10 @@ export default function HomePage() {
           <div className="stack-showcase reveal-item">
             <div className="stack-copy">
               <p className="eyebrow">// technical surface</p>
-              <h2 className="sec-head">Tools I build with</h2>
+              <h2 className="sec-head">Systems I work through</h2>
               <p className="sec-sub">
-                My resume spans classical data work, deep learning research, and agentic application prototyping.
-                The stack below reflects the tools I am most likely to use when shipping.
+                The stack is intentionally production-first: fast inference, reliable orchestration, observable
+                pipelines, and clean retrieval layers.
               </p>
             </div>
             <StackMarquee />
@@ -125,49 +127,52 @@ export default function HomePage() {
           <div className="learning-log-col reveal-item">
             <div className="learning-log-head">
               <div>
-                <p className="eyebrow">// about me</p>
-                <h3 className="log-title">What I am optimizing for</h3>
+                <p className="eyebrow">// learning log</p>
+                <h3 className="log-title">Current research threads</h3>
+                <p className="work-count">
+                  {learning.length} entr{learning.length === 1 ? "y" : "ies"} ·{" "}
+                  <Link href="/learning">View all →</Link>
+                </p>
               </div>
               <p className="log-intro">
-                I am targeting MLE, DS, and SWE roles where I can turn research-grade ideas into practical
-                systems, communicate clearly with product teams, and keep learning in public.
+                Small notes from systems I am shipping, studying, or pressure-testing in production.
               </p>
             </div>
-            <div className="about-panel">
-              {site.summary.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </div>
+            <LearningLog entries={learning} />
           </div>
         </section>
 
-        <section className="page-section final-page reveal has-stagger" aria-label="Experience and education">
-          <div className="log-section reveal-item" id="experience" aria-label="Experience">
+        <section className="page-section final-page reveal has-stagger" aria-label="Building and writing logs">
+          <div className="log-section reveal-item" aria-label="Building log">
             <div className="log-section-head">
               <div>
-                <p className="eyebrow">// experience</p>
-                <h2 className="sec-head">Where I have worked</h2>
+                <p className="eyebrow">// building log</p>
+                <h2 className="sec-head">What I am making</h2>
+                <p className="work-count">
+                  {building.length} entr{building.length === 1 ? "y" : "ies"} ·{" "}
+                  <Link href="/building">View all →</Link>
+                </p>
               </div>
               <p className="sec-sub">
-                Research, internship, and founder work that shaped how I approach applied machine learning and
-                software delivery.
+                A lightweight record of shipped pieces, experiments, and infrastructure improvements.
               </p>
             </div>
-            <ExperienceList entries={experience} />
+            <BuildingLog entries={building} />
           </div>
 
-          <div className="writing-section reveal-item" id="education" aria-label="Education">
+          <div className="writing-section reveal-item" id="writing" aria-label="Writing log">
             <div className="log-section-head">
               <div>
-                <p className="eyebrow">// education</p>
-                <h2 className="sec-head">Academic foundation</h2>
+                <p className="eyebrow">// writing log</p>
+                <h2 className="sec-head">Notes in public</h2>
+                <p className="work-count">
+                  {writing.length} entr{writing.length === 1 ? "y" : "ies"} ·{" "}
+                  <Link href="/writing">View all →</Link>
+                </p>
               </div>
-              <p className="sec-sub">
-                Formal training across machine learning, software design, algorithms, and data systems at
-                Monash University.
-              </p>
+              <p className="sec-sub">Short essays and field notes from production ML systems work.</p>
             </div>
-            <EducationList entries={education} />
+            <WritingLog entries={writing} />
           </div>
 
           <div className="reveal-item">

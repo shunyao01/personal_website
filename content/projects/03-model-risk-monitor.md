@@ -1,19 +1,17 @@
 ---
-title: Monash Research Apprenticeship
-date: 2022-02
-category: research
-featured: false
-teaser: Early ML research work applying association rule mining and neural networks to UCI datasets.
-tags: [Neural Networks, Research, Data Mining, UCI Datasets]
+title: Model Risk Monitor
+date: 2026-01
+category: infrastructure
+featured: true
+teaser: Drift, shadow scoring, and escalation before metrics fall.
+tags: [Evidently, Prometheus, k8s]
 metrics:
-  - value: "90.27%"
-    label: reported SOTA accuracy
-  - value: "Research"
-    label: apprenticeship format
+  - value: "98%"
+    label: drift recall
+  - value: "<5m"
+    label: alert latency
 ---
 
-Implemented and evaluated machine learning approaches under the Monash IT Student Research Apprenticeship program.
+Drift detection, shadow scoring, and alert escalation integrated with Prometheus and PagerDuty.
 
-The work focused on association rule mining and neural-network-based methods on UCI datasets, with measured performance reaching 90.27% accuracy.
-
-Beyond the modeling itself, the apprenticeship exposed me to research iteration, validation discipline, and technical writing in a formal academic setting.
+Tuning for low false positives mattered more than raw recall—on-call fatigue kills ML ops faster than a missed drift chart.

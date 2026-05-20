@@ -3,8 +3,6 @@ import path from "path";
 import matter from "gray-matter";
 import type {
   BuildingEntry,
-  EducationEntry,
-  ExperienceEntry,
   LearningEntry,
   LogStatus,
   Project,
@@ -56,7 +54,7 @@ export function getProjects(): Project[] {
     title: String(data.title ?? ""),
     teaser: String(data.teaser ?? ""),
     date: String(data.date ?? slug.slice(0, 7)),
-    category: (data.category as ProjectCategory) ?? "applied-ml",
+    category: (data.category as ProjectCategory) ?? "ml-engineering",
     featured: Boolean(data.featured),
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
     metrics: Array.isArray(data.metrics)
@@ -130,29 +128,6 @@ export function getWritingEntry(slug: string): WritingEntry | undefined {
   return getWriting().find((w) => w.slug === slug);
 }
 
-export function getExperience(): ExperienceEntry[] {
-  return readMarkdownFiles("experience", (slug, { data }) => ({
-    slug,
-    title: String(data.title ?? ""),
-    organization: String(data.organization ?? ""),
-    location: String(data.location ?? ""),
-    date: String(data.date ?? ""),
-    tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
-    highlights: Array.isArray(data.highlights) ? (data.highlights as string[]) : []
-  })).sort((a, b) => a.slug.localeCompare(b.slug));
-}
-
-export function getEducation(): EducationEntry[] {
-  return readMarkdownFiles("education", (slug, { data }) => ({
-    slug,
-    school: String(data.school ?? ""),
-    credential: String(data.credential ?? ""),
-    location: String(data.location ?? ""),
-    date: String(data.date ?? ""),
-    notes: Array.isArray(data.notes) ? (data.notes as string[]) : []
-  })).sort((a, b) => a.slug.localeCompare(b.slug));
-}
-
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export function formatMonth(date: string): string {
@@ -167,9 +142,9 @@ export function formatMonth(date: string): string {
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  agents: "AI Agents",
-  "applied-ml": "Applied ML",
-  product: "Product",
+  "ml-engineering": "ML Engineering",
+  mlops: "MLOps",
+  infrastructure: "Infrastructure",
   research: "Research"
 };
 

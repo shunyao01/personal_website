@@ -1,21 +1,17 @@
 ---
-title: EnergyHub MVP
-date: 2022-12
-category: product
+title: Feature Pipeline Framework
+date: 2026-02
+category: mlops
 featured: true
-teaser: Hackathon product for P2P energy trading, monitoring, and community battery coordination.
-tags: [Vue.js, Product Strategy, Real-time Monitoring, Team Leadership]
+teaser: Point-in-time correct features with repeatable backfills.
+tags: [PySpark, Airflow, dbt]
 metrics:
-  - value: "1st Runner-Up"
-    label: out of 50 teams
-  - value: "5"
-    label: team members led
-  - value: "MVP"
-    label: shipped in hackathon window
+  - value: "6"
+    label: teams using
+  - value: "200+"
+    label: features defined
 ---
 
-Led a five-person team to build EnergyHub, a prototype focused on decentralized energy access and coordination.
+Declarative point-in-time feature SDK running on Spark with automated backfills and data quality checks.
 
-The product combined a peer-to-peer energy marketplace, real-time AI monitoring, community battery sharing, and web-based coordination into one demoable workflow.
-
-The project finished as first runner-up and forced fast decisions across product scope, architecture, pitching, and execution under heavy time pressure.
+Teams adopt when backfills are boring: contracts in CI, lineage in the DAG, and a single SDK surface instead of six notebook templates.

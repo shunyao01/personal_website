@@ -1,21 +1,19 @@
 ---
-title: Autonomous Equity Research Agent
-date: 2025-07
-category: agents
+title: Real-time Recommendation Engine
+date: 2026-03
+category: ml-engineering
 featured: true
-teaser: Multi-agent equity research workflow that compresses analyst-style due diligence from hours into minutes.
-tags: [AutoGen, LlamaIndex, RAG, Llama, Qwen]
+teaser: Low-latency retrieval and ranking under production load.
+tags: [PyTorch, FAISS, Feast, Redis, Triton]
 metrics:
-  - value: "Hours → Minutes"
-    label: research turnaround
-  - value: "Multi-agent"
-    label: orchestration pattern
-  - value: "Analyst-grade"
-    label: report quality target
+  - value: "3.2M"
+    label: predictions/day
+  - value: "18ms"
+    label: p99 latency
+  - value: "+14%"
+    label: CTR lift
 ---
 
-Built an autonomous research workflow that uses multiple AI agents plus retrieval to automate equity analysis end to end.
+Two-tower retrieval model serving 3.2M daily predictions with incremental FAISS indexing and feature retrieval via Redis + Feast.
 
-The system combines agent collaboration, RAG with LlamaIndex, and open-weight LLMs such as Llama and Qwen to evaluate companies against personalized investment criteria including moat, intrinsic value, and competitor context.
-
-The outcome was a much faster research loop with reports designed to stay factual, structured, and useful for real decision-making rather than generic chatbot output.
+The hard part was not training—it was keeping point-in-time features correct under partial index updates while holding p99 latency. Shadow traffic and replay tests caught regressions before they hit ranking quality.

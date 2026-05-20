@@ -3,10 +3,7 @@ export type SiteConfig = {
   lastName: string;
   role: string;
   tagline: string;
-  summary: string[];
-  location: string;
   email: string;
-  resume: string;
   logo: string;
   badge: string;
   meta: string[];
@@ -17,7 +14,7 @@ export type SiteConfig = {
   };
 };
 
-export type ProjectCategory = "agents" | "applied-ml" | "product" | "research";
+export type ProjectCategory = "ml-engineering" | "mlops" | "infrastructure" | "research";
 
 export type ProjectMetric = {
   value: string;
@@ -62,23 +59,4 @@ export type WritingEntry = {
   title: string;
   date: string;
   body: string;
-};
-
-export type ExperienceEntry = {
-  slug: string;
-  title: string;
-  organization: string;
-  location: string;
-  date: string;
-  tags: string[];
-  highlights: string[];
-};
-
-export type EducationEntry = {
-  slug: string;
-  school: string;
-  credential: string;
-  location: string;
-  date: string;
-  notes: string[];
 };
